@@ -4,7 +4,6 @@ import asyncio
 from dependencies.gameList import gameList
 from dependencies.ramenMoments import ramenMoments
 from dependencies.gifList import gifList
-#from dependencies.841776273793613926 import 841776273793613926
 from discord import app_commands
 import typing
 
@@ -19,7 +18,6 @@ class aclient(discord.Client): #Setup code
             await tree.sync(guild=discord.Object(id=841776273793613926))
             self.synced = True
         print(f"Successfully logged in as {self.user}.")
-        #await channelMsgJoke()
         await messageLoop()
 
 client = aclient()
@@ -33,14 +31,6 @@ async def messageLoop(): #Sends random gif in general chat every couple hours
         channel = client.get_channel(841776274246467584)
         randGif = random.choice(gifList)
         await channel.send(f"{randGif}")
-
-#async def horcruxJoke():
-#    channel = client.get_channel(931570568334016542)
-#    await channel.send("This is true.")
-
-async def channelMsgJoke():
-    channel = client.get_channel(841776317712039958)
-    await channel.send("gAAAAABjTyrhtEgq7KK-90BzddPw68-NjUnfNRmhlT0fbT783HqoBECXId1uoe6PuR6YPpUPW52BsNeZ8u1M0cmSPd5hMv2lBQ==")
 
 @tree.command(name="ramen", description="Ramen Moment :)", guild=discord.Object(id=841776273793613926)) #Sends random messages pulled from a list
 async def self(interaction: discord.Interaction):
