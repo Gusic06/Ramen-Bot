@@ -7,7 +7,7 @@ from dependencies.gifList import gifList
 from discord import app_commands
 import typing
 
-class aclient(discord.Client): #Setup code
+class RamenBotClient(discord.Client): #Setup code
     def __init__(self):
         super().__init__(intents=discord.Intents.default())
         self.synced = False
@@ -21,7 +21,7 @@ class aclient(discord.Client): #Setup code
         await messageLoop()
         await fa5Loop()
 
-client = aclient()
+client = RamenBotClient()
 tree = app_commands.CommandTree(client)
 
 async def messageLoop(): #Sends random gif in general chat every couple hours
