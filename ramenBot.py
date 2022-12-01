@@ -19,6 +19,7 @@ class aclient(discord.Client): #Setup code
             self.synced = True
         print(f"Successfully logged in as {self.user}.")
         await messageLoop()
+        await fa5Loop()
 
 client = aclient()
 tree = app_commands.CommandTree(client)
@@ -31,6 +32,15 @@ async def messageLoop(): #Sends random gif in general chat every couple hours
         channel = client.get_channel(841776274246467584)
         randGif = random.choice(gifList)
         await channel.send(f"{randGif}")
+
+async def fa5Loop():
+    while True:
+        waitTime = random.randint(28000, 34000)
+        await asyncio.sleep(waitTime)
+        
+        channel = client.get_channel(841776274246467584)
+        fa5 = ":Fa5C2k8GB1c11:"
+        await channel.send(f"{fa5}")
 
 @tree.command(name="ramen", description="Ramen Moment :)", guild=discord.Object(id=841776273793613926)) #Sends random messages pulled from a list
 async def self(interaction: discord.Interaction):
